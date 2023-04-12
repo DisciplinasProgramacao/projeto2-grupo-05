@@ -1,94 +1,70 @@
-
+/*
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertTrue;
 
-public class Vertice {
+class VerticeTest {
+  public static Vertice v;
 
-    private ABB<Aresta> arestas;
-    private final int id;
-    private boolean visitado;
-    /**
-     * Construtor para criação de vértice identificado
-     * 
-     * @param id Número/id do vértice a ser criado (atributo final).
-     */
-    public Vertice(int id) {
-      this.id = id;
-      this.arestas = new ABB<Aresta>();
-      this.visitado = false;
-    }
-  
-    public ABB<Aresta> getArestas(){
-      return this.arestas;
-    }
-  
-    /**
-     * Retorna o id do vértice, caso seja necessário para verificações próprias
-     * 
-     * @return Identificador do vértice (int)
-     */
-    public int getId() {
-      return this.id;
-    }
-  
-    public boolean addAresta(int destino) {
-      return this.arestas.add(destino, new Aresta(destino));
-    }
-  
-    /**
-     * Adiciona uma aresta ponderada neste vértice para um destino
-     * 
-     * @param peso Peso da aresta
-     * @param dest Vértice de destino
-     * @return TRUE se foi inserida, FALSE caso já existisse e não foi inserida.
-     */
-    public boolean addAresta(int destino, int peso) {
-      return this.arestas.add(destino, new Aresta(peso, destino));
-    }
-  
-    public Aresta existeAresta(int destino) {
-      return arestas.find(destino);
-    }
-  
-    /**
-     * Remove e retorna a aresta para o destino indicado. Retorna null caso não
-     * exista a aresta.
-     * 
-     * @param destino Destino da aresta a ser removida.
-     * @return A aresta removida, ou null se não existir.
-     */
-    public Aresta removeAresta(int destino) {
-      return this.arestas.remove(destino);
-    }
-  
-    public int grau() {
-      return this.arestas.size();
-    }
-  
-    /**
-     * Marca o vértice como visitado
-     */
-    public void visitar() {
-      this.visitado = true;
-    }
-  
-    /**
-     * Marca o vértice como não visitado
-     */
-    public void limparVisita() {
-      this.visitado = false;
-    }
-  
-    /**
-     * Indica se o vértice foi visitado (TRUE) ou não (FALSE)
-     * 
-     * @return TRUE/FALSE conforme o vértice tenha sido ou não visitado.
-     */
-    public boolean visitado() {
-      return this.visitado;
-    }
-  
-}
-  
+  @BeforeEach
+  void setUp() throws Exception {
+    v = new Vertice(1);
+  }
+
+  @Test
+  @DisplayName("Adicionando uma aresta ao vertice")
+  void addAresta() {
+    assertTrue(v.addAresta(2));
+    assertFalse(v.addAresta(1));
+  }
+
+  @Test
+  @DisplayName("Adicionando uma aresta com peso ao vertice")
+  void addArestaPeso() {
+    assertTrue(v.addAresta(2, 1));
+    assertFalse(v.addAresta(2, 1));
+  }
+
+  @Test
+  @DisplayName("Verificando se a aresta existe")
+  void existeAresta() {
+    Aresta a = new Aresta(0);
+    v.addAresta(0);
+
+    assertEquals(a, v.existeAresta(0));
+    assertEquals(null, v.existeAresta(2));
+  }
+
+  @Test
+  @DisplayName("Removendo uma aresta")
+  void removeAresta() {
+    Aresta a = new Aresta(0);
+    v.addAresta(0);
+
+    assertEquals(a, v.removeAresta(0));
+    assertEquals(null, v.removeAresta(2));
+  }
+
+  @Test
+  @DisplayName("Calculando o grau do vertice")
+  void grau() {
+    v.addAresta(0);
+    v.addAresta(1);    
+
+    assertEquals(2, v.grau());
+  }
+
+  @Test
+  @DisplayName("Verificando se o vertice foi ou nao visitado")
+  void visitar() {
+	    v.visitar();
+	    assertTrue(v.visitado());
+	    v.limparVisita();
+	    assertFalse(v.visitado());
+  }
+
+
+
+}*/
