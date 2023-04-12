@@ -1,6 +1,6 @@
 [![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-f4981d0f882b2a3f0472912d15f9806d57e124e0fc890972558857b51b24a6f9.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=10489743)
 # Algoritmo em Grafos
-Escreva um ou dois parágrafos resumindo o objetivo do seu projeto.
+O projeto de grafos busca modelar e analisar um conjunto de entidades e suas interações por meio de grafos. Um grafo é composto por vérticese arestas, que representam conexões entre os vértices. O objetivo do projeto de grafos a visualização de dados dos grafos, realização de busca por profundida de por largura e a criação de grafos a partir de arquivos.
 
 ## Alunos integrantes da equipe
 
