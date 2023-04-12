@@ -41,7 +41,7 @@ public class Vertice {
    * @return TRUE se foi inserida, FALSE caso já existisse e não foi inserida.
    */
   public boolean addAresta(int destino, int peso) {
-    return this.arestas.add(destino, new Aresta(peso, destino));
+    return this.arestas.add(destino, new Aresta(detino,peso));
   }
 
   public Aresta existeAresta(int destino) {
@@ -84,6 +84,15 @@ public class Vertice {
    */
   public boolean visitado() {
     return this.visitado;
+  }
+
+  public Lista<Integer> vizinhos(){
+    Lista vizinhos=new Lista();
+    
+    for(int i=0;i<this.arestas.size();i++){
+      vizinhos.add(this.arestas.find(i).destino());
+    }
+    return vizinhos;
   }
 
 
